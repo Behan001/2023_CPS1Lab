@@ -2,31 +2,26 @@
 
 Serial pc(USBTX, USBRX);
 
-//counter
-int i=2;
 //term value
-int n=5;
-//first term
-int i_1 = 0;
-//second term
-int i_2 = 1;
+int n=12;
+
+
+int fib(int n){
+    //1,2,3,4,5......
+    //0,1,1,2,3
+    if(n == 1)
+        return (0);
+    else if (n == 2) 
+        return (1);
+    else{
+        return(fib(n-1)+fib(n-2));       
+        }
+}
 
 int main()
-{
-    pc.printf("Using Simple Loops (%d) \r\n", n);
-    pc.printf("%d" , i_1);
-    pc.printf("%d" , i_2);
-
-    while(i<n){
-        int sum = i_1 + i_2;
-        i_1 = i_2;
-        i_2 = sum;
-        i++;
-        pc.printf("%d" , sum);
+    {
+    pc.printf("using recursive function (%d) \r\n", n);
+    for(int i=1; i<=n; i++)
+    pc.printf("%d, \n\r ", fib(i));
 
     }
-
-    while (true) {
-
-    }
-}
